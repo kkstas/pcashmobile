@@ -1,12 +1,14 @@
-import { StatusBar } from "expo-status-bar";
-import { NavigationContainer } from "@react-navigation/native";
-import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
-import HomeStackNavigator from "./navigation/HomeStackNavigator";
-import ProfileStackNavigator from "./navigation/ProfileStackNavigator";
-import DocsStackNavigator from "./navigation/DocsStackNavigator";
-import TabBar from "./components/tabBar/TabBar";
+import { StatusBar } from "expo-status-bar"
+import { NavigationContainer } from "@react-navigation/native"
+import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs"
+import HomeStackNavigator from "./navigation/HomeStackNavigator"
+import ProfileStackNavigator from "./navigation/ProfileStackNavigator"
+import DocsStackNavigator from "./navigation/DocsStackNavigator"
+import TabBar from "./components/tabBar/TabBar"
+import { enableFreeze } from "react-native-screens"
 
-const Tab = createMaterialTopTabNavigator();
+enableFreeze(true)
+const Tab = createMaterialTopTabNavigator()
 
 export default function App() {
 	return (
@@ -42,5 +44,5 @@ export default function App() {
 				</Tab.Navigator>
 			</NavigationContainer>
 		</>
-	);
+	)
 }

@@ -1,17 +1,20 @@
-import { View, Pressable, Text, StyleSheet } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
-import ColorPalette from "../../theme/ColorPalette";
-import { LinearGradient } from "expo-linear-gradient";
-import { BlurView } from "expo-blur";
-import GoBackButton from "./GoBackButton";
-import LogOutButton from "./LogOutButton";
-import TitleComponent from "./TitleComponent";
+import { View, Pressable, Text, StyleSheet } from "react-native"
+import { SafeAreaView } from "react-native-safe-area-context"
+import ColorPalette from "../../theme/ColorPalette"
+import { LinearGradient } from "expo-linear-gradient"
+import { BlurView } from "expo-blur"
+import GoBackButton from "./GoBackButton"
+import LogOutButton from "./LogOutButton"
+import TitleComponent from "./TitleComponent"
 
 export default function HeaderComponent({ title, goBack, logOut }) {
 	return (
 		<View style={styles.container}>
 			<LinearGradient
-				colors={["rgba(133, 194, 230, 0.2)", "rgba(60, 30, 130, 0.15)"]}
+				colors={[
+					"rgba(60, 30, 130, 0.12)",
+					"rgba(133, 194, 230, 0.15)",
+				]}
 				style={styles.grad}
 			>
 				<SafeAreaView style={styles.safeAreaContainer}>
@@ -27,7 +30,7 @@ export default function HeaderComponent({ title, goBack, logOut }) {
 				</SafeAreaView>
 			</LinearGradient>
 		</View>
-	);
+	)
 }
 
 const styles = StyleSheet.create({
@@ -36,19 +39,10 @@ const styles = StyleSheet.create({
 		justifyContent: "center",
 		alignItems: "center",
 		minHeight: 80,
-
 		position: "relative",
-		backgroundColor: "rgba(255, 255, 255, 0.5)",
+		backgroundColor: "#fff",
 		borderBottomLeftRadius: 25,
 		borderBottomRightRadius: 25,
-		shadowColor: "#000",
-		shadowOffset: {
-			width: 0,
-			height: 1.5,
-		},
-		shadowOpacity: 0.23,
-		shadowRadius: 3.5,
-		elevation: 4,
 	},
 	grad: {
 		overflow: "hidden",
@@ -85,4 +79,4 @@ const styles = StyleSheet.create({
 		justifyContent: "center",
 		alignItems: "center",
 	},
-});
+})

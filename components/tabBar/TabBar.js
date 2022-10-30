@@ -1,9 +1,9 @@
-import { View, Pressable, Text, StyleSheet } from "react-native";
-import ColorPalette from "../../theme/ColorPalette";
-import { SafeAreaView } from "react-native-safe-area-context";
-import { LinearGradient } from "expo-linear-gradient";
-import Ionicons from "@expo/vector-icons/Ionicons";
-import { BlurView } from "expo-blur";
+import { View, Pressable, Text, StyleSheet } from "react-native"
+import ColorPalette from "../../theme/ColorPalette"
+import { SafeAreaView } from "react-native-safe-area-context"
+import { LinearGradient } from "expo-linear-gradient"
+import Ionicons from "@expo/vector-icons/Ionicons"
+import { BlurView } from "expo-blur"
 import Animated, {
 	useSharedValue,
 	useAnimatedStyle,
@@ -11,47 +11,47 @@ import Animated, {
 	useDerivedValue,
 	interpolateColor,
 	withSpring,
-} from "react-native-reanimated";
-import { useEffect, useState } from "react";
+} from "react-native-reanimated"
+import { useEffect, useState } from "react"
 
 ////////////////////////////////////////////////
 // wyłącza wszystkie warningi w symulacji!!!!!!!
-import { YellowBox } from "react-native";
-YellowBox.ignoreWarnings([""]);
+import { YellowBox } from "react-native"
+YellowBox.ignoreWarnings([""])
 ////////////////////////////////////////////////
 
 export default function TabBar({ state, descriptors, navigation, position }) {
-	const scaleLeft = useSharedValue(1);
-	const scaleCenter = useSharedValue(1);
-	const scaleRight = useSharedValue(1);
+	const scaleLeft = useSharedValue(1)
+	const scaleCenter = useSharedValue(1)
+	const scaleRight = useSharedValue(1)
 
-	const offset = useSharedValue(0);
+	const offset = useSharedValue(0)
 	const sliderStyle = useAnimatedStyle(() => {
 		return {
 			transform: [{ translateX: offset.value }],
-		};
-	});
+		}
+	})
 
-	const [pos, setPos] = useState();
+	const [pos, setPos] = useState()
 
 	useEffect(() => {
 		if (state.index === 0) {
-			offset.value = withTiming(-pos / 3);
-			scaleLeft.value = withTiming(1.5, { duration: 200 });
-			scaleCenter.value = withTiming(1, { duration: 200 });
-			scaleRight.value = withTiming(1, { duration: 200 });
+			offset.value = withTiming(-pos / 3)
+			scaleLeft.value = withTiming(1.5, { duration: 200 })
+			scaleCenter.value = withTiming(1, { duration: 200 })
+			scaleRight.value = withTiming(1, { duration: 200 })
 		} else if (state.index === 1) {
-			offset.value = withTiming(0);
-			scaleLeft.value = withTiming(1, { duration: 200 });
-			scaleCenter.value = withTiming(1.5, { duration: 200 });
-			scaleRight.value = withTiming(1, { duration: 200 });
+			offset.value = withTiming(0)
+			scaleLeft.value = withTiming(1, { duration: 200 })
+			scaleCenter.value = withTiming(1.5, { duration: 200 })
+			scaleRight.value = withTiming(1, { duration: 200 })
 		} else if (state.index === 2) {
-			offset.value = withTiming(pos / 3);
-			scaleLeft.value = withTiming(1, { duration: 200 });
-			scaleCenter.value = withTiming(1, { duration: 200 });
-			scaleRight.value = withTiming(1.5, { duration: 200 });
+			offset.value = withTiming(pos / 3)
+			scaleLeft.value = withTiming(1, { duration: 200 })
+			scaleCenter.value = withTiming(1, { duration: 200 })
+			scaleRight.value = withTiming(1.5, { duration: 200 })
 		}
-	}, [state.index]);
+	}, [state.index])
 
 	const styleLeft = useAnimatedStyle(() => {
 		return {
@@ -59,24 +59,24 @@ export default function TabBar({ state, descriptors, navigation, position }) {
 				{ scale: scaleLeft.value },
 				{ translateY: (scaleLeft.value - 1) * -6 },
 			],
-		};
-	}, []);
+		}
+	}, [])
 	const styleRight = useAnimatedStyle(() => {
 		return {
 			transform: [
 				{ scale: scaleRight.value },
 				{ translateY: (scaleRight.value - 1) * -6 },
 			],
-		};
-	}, []);
+		}
+	}, [])
 	const styleCenter = useAnimatedStyle(() => {
 		return {
 			transform: [
 				{ scale: scaleCenter.value },
 				{ translateY: (scaleCenter.value - 1) * -6 },
 			],
-		};
-	}, []);
+		}
+	}, [])
 
 	return (
 		<View style={styles.container}>
@@ -88,19 +88,21 @@ export default function TabBar({ state, descriptors, navigation, position }) {
 				style={[styles.sliderTwo, sliderStyle]}
 			></Animated.View>
 			<LinearGradient
-				colors={["rgba(60, 30, 130, 0.12)", "rgba(133, 194, 230, 0.1)"]}
+				colors={[
+					"rgba(133, 194, 230, 0.32)",
+					"rgba(60, 30, 130, 0.45)",
+				]}
 				style={styles.grad}
 			/>
 			<BlurView
-				intensity={65}
-				// tint="light"
+				intensity={85}
+				tint="light"
 				style={styles.blurContainer}
 			>
 				<SafeAreaView
 					style={styles.safeAreaContainer}
 					onLayout={(event) => {
-						console.log(event.nativeEvent.layout.width);
-						setPos(event.nativeEvent.layout.width);
+						setPos(event.nativeEvent.layout.width)
 					}}
 				>
 					{/* ikona po lewo */}
@@ -212,7 +214,7 @@ export default function TabBar({ state, descriptors, navigation, position }) {
 				</SafeAreaView>
 			</BlurView>
 		</View>
-	);
+	)
 }
 
 const styles = StyleSheet.create({
@@ -234,7 +236,7 @@ const styles = StyleSheet.create({
 		elevation: 4,
 	},
 	slider: {
-		borderTopWidth: 3,
+		borderTopWidth: 7,
 		borderTopColor: ColorPalette.magenta400,
 		width: 60,
 		position: "absolute",
@@ -254,9 +256,8 @@ const styles = StyleSheet.create({
 	sliderTwo: {
 		height: "90%",
 		width: 120,
-		backgroundColor: ColorPalette.white,
+		backgroundColor: "rgba(255, 255, 255, 0.3)",
 		position: "absolute",
-		opacity: 0.25,
 		bottom: 0,
 		borderRadius: "100%",
 	},
@@ -309,4 +310,4 @@ const styles = StyleSheet.create({
 		position: "absolute",
 		bottom: "35%",
 	},
-});
+})

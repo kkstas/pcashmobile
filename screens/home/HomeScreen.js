@@ -1,7 +1,8 @@
-import { BlurView } from "expo-blur";
-import { StyleSheet, View, Text, Pressable, ScrollView } from "react-native";
-import Header from "../../components/header/Header";
-import ColorPalette from "../../theme/ColorPalette";
+import { BlurView } from "expo-blur"
+import { StyleSheet, View, Text, Pressable, ScrollView } from "react-native"
+import Header from "../../components/header/Header"
+import ColorPalette from "../../theme/ColorPalette"
+import MainBox from "./MainBox"
 
 export default function HomeScreen({ navigation }) {
 	return (
@@ -9,6 +10,7 @@ export default function HomeScreen({ navigation }) {
 			goBack={false}
 			logOut={false}
 		>
+			<MainBox />
 			<View style={styles.container}>
 				<View style={styles.boxContainer}>
 					<Pressable
@@ -66,7 +68,7 @@ export default function HomeScreen({ navigation }) {
 				</View>
 			</View>
 		</Header>
-	);
+	)
 }
 
 const styles = StyleSheet.create({
@@ -91,4 +93,4 @@ const styles = StyleSheet.create({
 		justifyContent: "center",
 		alignItems: "center",
 	},
-});
+})

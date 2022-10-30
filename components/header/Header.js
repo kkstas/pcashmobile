@@ -1,27 +1,20 @@
-import { View, Pressable, Text, StyleSheet, ScrollView } from "react-native";
-import ColorPalette from "../../theme/ColorPalette";
-import HeaderComponent from "./HeaderComponent";
-import { LinearGradient } from "expo-linear-gradient";
-import { useState } from "react";
-import { BlurView } from "expo-blur";
+import { View, Pressable, Text, StyleSheet, ScrollView } from "react-native"
+import ColorPalette from "../../theme/ColorPalette"
+import HeaderComponent from "./HeaderComponent"
+import { LinearGradient } from "expo-linear-gradient"
+import { useState } from "react"
+import { BlurView } from "expo-blur"
 
 export default function Header({ title, children, goBack, logOut }) {
-	const [headerHeight, setHeaderHeight] = useState();
+	const [headerHeight, setHeaderHeight] = useState()
 	return (
 		<View style={styles.container}>
 			<View
 				style={styles.headerWrapper}
 				onLayout={(event) => {
-					setHeaderHeight(event.nativeEvent.layout.height);
+					setHeaderHeight(event.nativeEvent.layout.height)
 				}}
 			>
-				<BlurView
-					intensity={50}
-					style={[
-						styles.floatingBlur,
-						headerHeight && { height: headerHeight },
-					]}
-				/>
 				<HeaderComponent
 					title={title}
 					goBack={goBack}
@@ -39,7 +32,7 @@ export default function Header({ title, children, goBack, logOut }) {
 				</View>
 			</ScrollView>
 		</View>
-	);
+	)
 }
 
 const styles = StyleSheet.create({
@@ -49,6 +42,8 @@ const styles = StyleSheet.create({
 		justifyContent: "center",
 		alignItems: "center",
 		position: "absolute",
+
+		zIndex: 4,
 	},
 	headerWrapper: {
 		width: "97%",
@@ -58,6 +53,14 @@ const styles = StyleSheet.create({
 		top: 0,
 		zIndex: 10,
 		maxHeight: 100,
+		shadowColor: "#000",
+		shadowOffset: {
+			width: 0,
+			height: 1,
+		},
+		shadowOpacity: 0.22,
+		shadowRadius: 2.8,
+		elevation: 4,
 	},
 	contentWrapper: {
 		width: "100%",
@@ -82,4 +85,4 @@ const styles = StyleSheet.create({
 		borderBottomRightRadius: 25,
 		overflow: "hidden",
 	},
-});
+})

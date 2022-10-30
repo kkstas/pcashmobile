@@ -1,5 +1,7 @@
-import { StyleSheet, View, Text, Pressable } from "react-native";
-import Header from "../../components/header/Header";
+import { StyleSheet, View, Text, Pressable } from "react-native"
+import Header from "../../components/header/Header"
+import Experimental from "./experimental"
+import MainBox from "./MainBox"
 
 export default function DocsScreen() {
 	return (
@@ -7,9 +9,11 @@ export default function DocsScreen() {
 			goBack={false}
 			logOut={false}
 		>
+			<MainBox />
+			<Experimental />
 			<Text>Doc Screen</Text>
 		</Header>
-	);
+	)
 }
 
 const styles = StyleSheet.create({
@@ -17,4 +21,4 @@ const styles = StyleSheet.create({
 		justifyContent: "center",
 		alignItems: "center",
 	},
-});
+})
