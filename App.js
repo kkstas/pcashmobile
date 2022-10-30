@@ -1,20 +1,46 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StatusBar } from "expo-status-bar";
+import { NavigationContainer } from "@react-navigation/native";
+import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
+import HomeStackNavigator from "./navigation/HomeStackNavigator";
+import ProfileStackNavigator from "./navigation/ProfileStackNavigator";
+import DocsStackNavigator from "./navigation/DocsStackNavigator";
+import TabBar from "./components/tabBar/TabBar";
+
+const Tab = createMaterialTopTabNavigator();
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+	return (
+		<>
+			<StatusBar style="dark" />
+			<NavigationContainer>
+				<Tab.Navigator
+					tabBar={(props) => <TabBar {...props} />}
+					tabBarPosition="bottom"
+					initialRouteName="HomeStackNavigator"
+				>
+					<Tab.Screen
+						name="DocsStackNavigator"
+						component={DocsStackNavigator}
+						options={{
+							tabBarLabel: "Documents",
+						}}
+					/>
+					<Tab.Screen
+						name="HomeStackNavigator"
+						component={HomeStackNavigator}
+						options={{
+							tabBarLabel: "Dom",
+						}}
+					/>
+					<Tab.Screen
+						name="ProfileStackNavigator"
+						component={ProfileStackNavigator}
+						options={{
+							tabBarLabel: "Profil",
+						}}
+					/>
+				</Tab.Navigator>
+			</NavigationContainer>
+		</>
+	);
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
