@@ -16,8 +16,8 @@ import { useEffect, useState } from "react"
 
 ////////////////////////////////////////////////
 // wyłącza wszystkie warningi w symulacji!!!!!!!
-import { YellowBox } from "react-native"
-YellowBox.ignoreWarnings([""])
+// import { YellowBox } from "react-native"
+// YellowBox.ignoreWarnings([""])
 ////////////////////////////////////////////////
 
 export default function TabBar({ state, descriptors, navigation, position }) {

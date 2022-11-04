@@ -1,10 +1,10 @@
-import { Pressable, View, StyleSheet, Text } from "react-native";
-import { useNavigation } from "@react-navigation/native";
-import ColorPalette from "../../theme/ColorPalette";
-import Ionicons from "@expo/vector-icons/Ionicons";
+import { Pressable, StyleSheet, Text } from "react-native"
+import { useNavigation } from "@react-navigation/native"
+import ColorPalette from "../../theme/ColorPalette"
+import Ionicons from "@expo/vector-icons/Ionicons"
 
 export default function LogOutButton() {
-	const navigation = useNavigation();
+	const navigation = useNavigation()
 
 	return (
 		<Pressable
@@ -21,7 +21,7 @@ export default function LogOutButton() {
 				color={ColorPalette.blue400}
 			/>
 		</Pressable>
-	);
+	)
 }
 
 const styles = StyleSheet.create({
@@ -40,4 +40,4 @@ const styles = StyleSheet.create({
 		color: ColorPalette.blue400,
 		paddingRight: 6,
 	},
-});
+})

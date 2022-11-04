@@ -1,14 +1,18 @@
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import HomeScreen from "../screens/home/HomeScreen";
-import ScanScreen from "../screens/scan/ScanScreen";
+import { createNativeStackNavigator } from "@react-navigation/native-stack"
+import HomeScreen from "../screens/home/HomeScreen"
+import ScanScreen from "../screens/scan/ScanScreen"
+import ColorPalette from "../theme/ColorPalette"
 
-const Stack = createNativeStackNavigator();
+const Stack = createNativeStackNavigator()
 
 export default function HomeStackNavigator() {
 	return (
 		<Stack.Navigator
 			screenOptions={{
 				headerShown: false,
+				contentStyle: {
+					backgroundColor: ColorPalette.backgroundLight,
+				},
 			}}
 		>
 			<Stack.Screen
@@ -20,5 +24,5 @@ export default function HomeStackNavigator() {
 				component={ScanScreen}
 			/>
 		</Stack.Navigator>
-	);
+	)
 }

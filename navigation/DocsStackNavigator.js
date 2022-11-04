@@ -1,14 +1,17 @@
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import ProfileScreen from "../screens/profile/ProfileScreen";
-import DocsScreen from "../screens/docs/DocsScreen";
+import { createNativeStackNavigator } from "@react-navigation/native-stack"
+import DocsScreen from "../screens/docs/DocsScreen"
+import ColorPalette from "../theme/ColorPalette"
 
-const Stack = createNativeStackNavigator();
+const Stack = createNativeStackNavigator()
 
 export default function DocsStackNavigator() {
 	return (
 		<Stack.Navigator
 			screenOptions={{
 				headerShown: false,
+				contentStyle: {
+					backgroundColor: ColorPalette.backgroundLight,
+				},
 			}}
 		>
 			<Stack.Screen
@@ -16,5 +19,5 @@ export default function DocsStackNavigator() {
 				component={DocsScreen}
 			/>
 		</Stack.Navigator>
-	);
+	)
 }

@@ -1,9 +1,6 @@
 import { View, Pressable, Text, StyleSheet, ScrollView } from "react-native"
-import ColorPalette from "../../theme/ColorPalette"
 import HeaderComponent from "./HeaderComponent"
-import { LinearGradient } from "expo-linear-gradient"
 import { useState } from "react"
-import { BlurView } from "expo-blur"
 
 export default function Header({ title, children, goBack, logOut }) {
 	const [headerHeight, setHeaderHeight] = useState()
@@ -42,7 +39,6 @@ const styles = StyleSheet.create({
 		justifyContent: "center",
 		alignItems: "center",
 		position: "absolute",
-
 		zIndex: 4,
 	},
 	headerWrapper: {

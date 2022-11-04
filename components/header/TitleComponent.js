@@ -1,10 +1,9 @@
-import { Pressable, View, Image, StyleSheet, Text } from "react-native";
-import { useNavigation } from "@react-navigation/native";
-import ColorPalette from "../../theme/ColorPalette";
-import Ionicons from "@expo/vector-icons/Ionicons";
+import { Pressable, View, Image, StyleSheet, Text } from "react-native"
+import { useNavigation } from "@react-navigation/native"
+import ColorPalette from "../../theme/ColorPalette"
 
 export default function TitleComponent({ title }) {
-	const navigation = useNavigation();
+	const navigation = useNavigation()
 
 	return (
 		<Pressable
@@ -19,7 +18,7 @@ export default function TitleComponent({ title }) {
 				source={require("../../assets/ITCARD-svg-210126-OK.png")}
 			/>
 		</Pressable>
-	);
+	)
 }
 
 const styles = StyleSheet.create({
@@ -43,4 +42,4 @@ const styles = StyleSheet.create({
 		maxHeight: 18,
 		textAlign: "center",
 	},
-});
+})

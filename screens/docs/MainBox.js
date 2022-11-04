@@ -52,15 +52,15 @@ export default function MainBox() {
 
 	function flow() {
 		offsetSmallest.value = withDelay(
-			1000,
-			withRepeat(withTiming(5, { duration: 3000 }), -1, true)
+			500,
+			withRepeat(withTiming(10, { duration: 1500 }), -1, true)
 		)
 		offsetMid.value = withDelay(
-			500,
-			withRepeat(withTiming(8, { duration: 3000 }), -1, true)
+			250,
+			withRepeat(withTiming(10, { duration: 1500 }), -1, true)
 		)
 		offsetLargest.value = withRepeat(
-			withTiming(12, { duration: 3000 }),
+			withTiming(12, { duration: 1500 }),
 			-1,
 			true
 		)

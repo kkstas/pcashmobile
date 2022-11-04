@@ -3,6 +3,13 @@ import { StyleSheet, View, Text, Pressable, ScrollView } from "react-native"
 import Header from "../../components/header/Header"
 import ColorPalette from "../../theme/ColorPalette"
 import MainBox from "./MainBox"
+import AllTicketsBox from "./moduleBoxes/AllTicketsBox"
+import ModuleTitle from "./moduleBoxes/ModuleTitle"
+import OpinionBox from "./moduleBoxes/OpinionBox"
+import ReceiptBox from "./moduleBoxes/ReceiptBox"
+import ScannerBox from "./moduleBoxes/ScannerBox"
+import ServiceBox from "./moduleBoxes/ServiceBox"
+import TicketBox from "./moduleBoxes/TicketBox"
 
 export default function HomeScreen({ navigation }) {
 	return (
@@ -11,61 +18,29 @@ export default function HomeScreen({ navigation }) {
 			logOut={false}
 		>
 			<MainBox />
-			<View style={styles.container}>
-				<View style={styles.boxContainer}>
-					<Pressable
-						style={styles.box}
-						onPress={() => navigation.navigate("Scan")}
-					>
-						<Text>skanuj</Text>
-						<Text>dokument</Text>
-					</Pressable>
-					<View style={styles.box}></View>
-				</View>
-				<View style={styles.boxContainer}>
-					<View style={styles.box}></View>
-					<View style={styles.box}></View>
-				</View>
-				<View style={styles.boxContainer}>
-					<View style={styles.box}></View>
-					<View style={styles.box}></View>
-				</View>
-				<View style={styles.boxContainer}>
-					<View style={styles.box}></View>
-					<View style={styles.box}></View>
-				</View>
-				<View style={styles.boxContainer}>
-					<View style={styles.box}></View>
-					<View style={styles.box}></View>
-				</View>
-				<View style={styles.boxContainer}>
-					<View style={styles.box}></View>
-					<View style={styles.box}></View>
-				</View>
-				<View style={styles.boxContainer}>
-					<View style={styles.box}></View>
-					<View style={styles.box}></View>
-				</View>
-				<View style={styles.boxContainer}>
-					<View style={styles.box}></View>
-					<View style={styles.box}></View>
-				</View>
-				<View style={styles.boxContainer}>
-					<View style={styles.box}></View>
-					<View style={styles.box}></View>
-				</View>
-				<View style={styles.boxContainer}>
-					<View style={styles.box}></View>
-					<View style={styles.box}></View>
-				</View>
-				<View style={styles.boxContainer}>
-					<View style={styles.box}></View>
-					<View style={styles.box}></View>
-				</View>
-				<View style={styles.boxContainer}>
-					<View style={styles.box}></View>
-					<View style={styles.box}></View>
-				</View>
+
+			<View
+				style={{
+					width: "85%",
+					height: 1,
+					borderBottomWidth: 1,
+					borderBottomColor: ColorPalette.blue400,
+					opacity: 0.2,
+					marginTop: 15,
+					marginBottom: 5,
+				}}
+			/>
+			<View style={styles.moduleContainer}>
+				<ScannerBox onPress={() => navigation.navigate("Scan")} />
+				<TicketBox />
+			</View>
+			<View style={styles.moduleContainer}>
+				<ReceiptBox />
+				<AllTicketsBox />
+			</View>
+			<View style={styles.moduleContainer}>
+				<OpinionBox />
+				<ServiceBox />
 			</View>
 		</Header>
 	)
@@ -92,5 +67,12 @@ const styles = StyleSheet.create({
 		height: 100,
 		justifyContent: "center",
 		alignItems: "center",
+	},
+	moduleContainer: {
+		width: "100%",
+		justifyContent: "center",
+		alignItems: "center",
+		flexDirection: "row",
+		marginVertical: 5,
 	},
 })

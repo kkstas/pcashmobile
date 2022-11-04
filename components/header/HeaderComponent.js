@@ -1,8 +1,6 @@
 import { View, Pressable, Text, StyleSheet } from "react-native"
 import { SafeAreaView } from "react-native-safe-area-context"
-import ColorPalette from "../../theme/ColorPalette"
 import { LinearGradient } from "expo-linear-gradient"
-import { BlurView } from "expo-blur"
 import GoBackButton from "./GoBackButton"
 import LogOutButton from "./LogOutButton"
 import TitleComponent from "./TitleComponent"

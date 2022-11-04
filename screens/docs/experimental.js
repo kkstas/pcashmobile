@@ -60,10 +60,6 @@ export default function Experimental() {
 					></Animated.View>
 				</PanGestureHandler>
 			</View>
-			<Button
-				title="Go down"
-				onPress={() => console.log("asdf")}
-			/>
 		</View>
 	)
 }

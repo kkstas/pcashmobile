@@ -6,6 +6,7 @@ const ColorPalette = {
 	orange400: "rgb(255, 102, 0)",
 	magenta400: "rgb(255, 0, 146)",
 	white: "#ffffff",
-};
+	backgroundLight: "rgb(246, 246, 252)",
+}
 
-export default ColorPalette;
+export default ColorPalette
