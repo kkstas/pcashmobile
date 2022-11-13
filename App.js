@@ -1,48 +1,41 @@
 import { StatusBar } from "expo-status-bar"
 import { NavigationContainer } from "@react-navigation/native"
-import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs"
-import HomeStackNavigator from "./navigation/HomeStackNavigator"
-import ProfileStackNavigator from "./navigation/ProfileStackNavigator"
-import DocsStackNavigator from "./navigation/DocsStackNavigator"
-import TabBar from "./components/tabBar/TabBar"
+import { createNativeStackNavigator } from "@react-navigation/native-stack"
 import { enableFreeze } from "react-native-screens"
+import { Provider } from "react-redux"
+import { store } from "./store/redux/store"
+import LogInStackNavigator from "./navigation/LogInStackNavigator"
+import MainNav from "./navigation/MainNav"
 
 enableFreeze(true)
-const Tab = createMaterialTopTabNavigator()
+const Stack = createNativeStackNavigator()
 
 export default function App() {
 	return (
 		<>
 			<StatusBar style="dark" />
-			<NavigationContainer>
-				<Tab.Navigator
-					tabBar={(props) => <TabBar {...props} />}
-					tabBarPosition="bottom"
-					initialRouteName="HomeStackNavigator"
-				>
-					<Tab.Screen
-						name="DocsStackNavigator"
-						component={DocsStackNavigator}
-						options={{
-							tabBarLabel: "Documents",
+			<Provider store={store}>
+				<NavigationContainer>
+					<Stack.Navigator
+						initialRouteName="Logging"
+						screenOptions={{
+							headerShown: false,
 						}}
-					/>
-					<Tab.Screen
-						name="HomeStackNavigator"
-						component={HomeStackNavigator}
-						options={{
-							tabBarLabel: "Dom",
-						}}
-					/>
-					<Tab.Screen
-						name="ProfileStackNavigator"
-						component={ProfileStackNavigator}
-						options={{
-							tabBarLabel: "Profil",
-						}}
-					/>
-				</Tab.Navigator>
-			</NavigationContainer>
+					>
+						<Stack.Screen
+							name="Main"
+							component={MainNav}
+						/>
+						<Stack.Screen
+							name="Logging"
+							component={LogInStackNavigator}
+							options={{
+								tabBarShown: false,
+							}}
+						/>
+					</Stack.Navigator>
+				</NavigationContainer>
+			</Provider>
 		</>
 	)
 }

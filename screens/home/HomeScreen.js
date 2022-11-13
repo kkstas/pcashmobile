@@ -4,44 +4,39 @@ import Header from "../../components/header/Header"
 import ColorPalette from "../../theme/ColorPalette"
 import MainBox from "./MainBox"
 import AllTicketsBox from "./moduleBoxes/AllTicketsBox"
-import ModuleTitle from "./moduleBoxes/ModuleTitle"
 import OpinionBox from "./moduleBoxes/OpinionBox"
 import ReceiptBox from "./moduleBoxes/ReceiptBox"
 import ScannerBox from "./moduleBoxes/ScannerBox"
 import ServiceBox from "./moduleBoxes/ServiceBox"
 import TicketBox from "./moduleBoxes/TicketBox"
+import Separator from "./Separator"
+import { useSelector } from "react-redux"
 
 export default function HomeScreen({ navigation }) {
+	const isLoggedIn = useSelector((state) => state.userInfo.isLoggedIn)
+	if (!isLoggedIn) {
+		navigation.replace("Logging")
+	}
 	return (
 		<Header
 			goBack={false}
-			logOut={false}
+			logOut={true}
 		>
 			<MainBox />
-
-			<View
-				style={{
-					width: "85%",
-					height: 1,
-					borderBottomWidth: 1,
-					borderBottomColor: ColorPalette.blue400,
-					opacity: 0.2,
-					marginTop: 15,
-					marginBottom: 5,
-				}}
-			/>
+			<Separator />
 			<View style={styles.moduleContainer}>
 				<ScannerBox onPress={() => navigation.navigate("Scan")} />
-				<TicketBox />
+				<TicketBox onPress={() => navigation.navigate("Ticket")} />
 			</View>
 			<View style={styles.moduleContainer}>
-				<ReceiptBox />
+				<ReceiptBox onPress={() => navigation.navigate("Receipt")} />
 				<AllTicketsBox />
 			</View>
 			<View style={styles.moduleContainer}>
 				<OpinionBox />
 				<ServiceBox />
 			</View>
+			<View style={styles.bottomCoverView}></View>
 		</Header>
 	)
 }
@@ -74,5 +69,9 @@ const styles = StyleSheet.create({
 		alignItems: "center",
 		flexDirection: "row",
 		marginVertical: 5,
+	},
+	bottomCoverView: {
+		width: "100%",
+		height: 140,
 	},
 })

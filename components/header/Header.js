@@ -1,11 +1,26 @@
 import { View, Pressable, Text, StyleSheet, ScrollView } from "react-native"
 import HeaderComponent from "./HeaderComponent"
 import { useState } from "react"
+import ColorPalette from "../../theme/ColorPalette"
 
-export default function Header({ title, children, goBack, logOut }) {
+export default function Header({
+	title,
+	children,
+	goBack,
+	logOut,
+	isBackgroundTransparent,
+}) {
 	const [headerHeight, setHeaderHeight] = useState()
+
 	return (
-		<View style={styles.container}>
+		<View
+			style={[
+				styles.container,
+				!isBackgroundTransparent && {
+					backgroundColor: ColorPalette.backgroundLight,
+				},
+			]}
+		>
 			<View
 				style={styles.headerWrapper}
 				onLayout={(event) => {

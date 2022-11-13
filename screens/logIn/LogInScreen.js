@@ -1,10 +1,12 @@
 // import { LinearGradient } from "expo-linear-gradient"
 import { StyleSheet, View, Text, Pressable } from "react-native"
 import Header from "../../components/header/Header"
-import MainBox from "./MainBox"
+import LogInBox from "./LogInBox"
 import Separator from "./Separator"
 
-export default function ProfileScreen() {
+// import Separator from "./Separator"
+
+export default function LogInScreen({ navigation }) {
 	return (
 		// <LinearGradient
 		// 	style={{ width: "100%", height: "100%" }}
@@ -12,10 +14,12 @@ export default function ProfileScreen() {
 		// >
 		<Header
 			goBack={false}
-			logOut={true}
+			logOut={false}
 		>
-			<MainBox />
-			<Separator />
+			<View style={styles.container}>
+				<Separator />
+				<LogInBox navigation={navigation} />
+			</View>
 		</Header>
 		// </LinearGradient>
 	)
@@ -25,5 +29,8 @@ const styles = StyleSheet.create({
 	container: {
 		justifyContent: "center",
 		alignItems: "center",
+		flex: 1,
+		width: "100%",
+		marginTop: 90,
 	},
 })

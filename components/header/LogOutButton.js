@@ -2,17 +2,24 @@ import { Pressable, StyleSheet, Text } from "react-native"
 import { useNavigation } from "@react-navigation/native"
 import ColorPalette from "../../theme/ColorPalette"
 import Ionicons from "@expo/vector-icons/Ionicons"
+import { useDispatch } from "react-redux"
+import { logOut } from "../../store/redux/slices/userInfo"
 
 export default function LogOutButton() {
 	const navigation = useNavigation()
+	const dispatch = useDispatch()
 
+	function handlePressed() {
+		dispatch(logOut())
+		navigation.replace("Logging")
+	}
 	return (
 		<Pressable
 			style={({ pressed }) => [
 				styles.container,
 				pressed && styles.pressed,
 			]}
-			onPress={() => navigation.goBack()}
+			onPress={handlePressed}
 		>
 			<Text style={styles.text}>Wyloguj</Text>
 			<Ionicons

@@ -3,8 +3,9 @@ import Header from "../../components/header/Header"
 import { BarCodeScanner } from "expo-barcode-scanner"
 import React, { useState, useEffect } from "react"
 import { BlurView } from "expo-blur"
+import ReceiptInfoComponent from "./ReceiptInfoComponent"
 
-export default function ScanScreen({ navigation }) {
+export default function ReceiptScreen({ navigation }) {
 	const [hasPermission, setHasPermission] = useState(null)
 	const [scanned, setScanned] = useState(false)
 
@@ -46,26 +47,37 @@ export default function ScanScreen({ navigation }) {
 	}
 
 	return (
-		<View style={styles.container}>
+		<View style={styles.mainView}>
 			<View style={styles.floatingHeader}>
 				<Header
 					goBack={true}
 					isBackgroundTransparent={true}
 				/>
+				<ReceiptInfoComponent />
 			</View>
-			<BarCodeScanner
-				onBarCodeScanned={scanned ? undefined : handleBarCodeScanned}
-				style={StyleSheet.absoluteFillObject}
-			/>
+			<View style={styles.container}>
+				<BarCodeScanner
+					onBarCodeScanned={
+						scanned ? undefined : handleBarCodeScanned
+					}
+					style={StyleSheet.absoluteFillObject}
+				/>
+			</View>
 		</View>
 	)
 }
 
 const styles = StyleSheet.create({
-	container: {
+	mainView: {
 		flex: 1,
+	},
+	container: {
 		flexDirection: "column",
 		justifyContent: "center",
+		position: "relative",
+		height: "100%",
+		alignItems: "center",
+		width: "100%",
 	},
 	floatingHeader: {
 		position: "absolute",

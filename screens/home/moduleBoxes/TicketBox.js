@@ -2,13 +2,14 @@ import { StyleSheet, Text, Pressable } from "react-native"
 import Ionicons from "@expo/vector-icons/Ionicons"
 import ColorPalette from "../../../theme/ColorPalette"
 
-export default function TicketBox() {
+export default function TicketBox({onPress}) {
 	return (
 		<Pressable
 			style={({ pressed }) => [
 				styles.container,
 				pressed && styles.pressed,
 			]}
+            onPress={onPress} 
 		>
 			<Ionicons
 				name="camera-outline"

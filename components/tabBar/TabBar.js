@@ -57,7 +57,7 @@ export default function TabBar({ state, descriptors, navigation, position }) {
 		return {
 			transform: [
 				{ scale: scaleLeft.value },
-				{ translateY: (scaleLeft.value - 1) * -6 },
+				{ translateY: scaleLeft.value * -3 },
 			],
 		}
 	}, [])
@@ -65,7 +65,7 @@ export default function TabBar({ state, descriptors, navigation, position }) {
 		return {
 			transform: [
 				{ scale: scaleRight.value },
-				{ translateY: (scaleRight.value - 1) * -6 },
+				{ translateY: scaleRight.value * -3 },
 			],
 		}
 	}, [])
@@ -73,7 +73,7 @@ export default function TabBar({ state, descriptors, navigation, position }) {
 		return {
 			transform: [
 				{ scale: scaleCenter.value },
-				{ translateY: (scaleCenter.value - 1) * -6 },
+				{ translateY: scaleCenter.value * -3 },
 			],
 		}
 	}, [])

@@ -2,16 +2,17 @@ import { View, StyleSheet, Text, Pressable } from "react-native"
 import Ionicons from "@expo/vector-icons/Ionicons"
 import ColorPalette from "../../../theme/ColorPalette"
 
-export default function ReceiptBox() {
+export default function ReceiptBox({ onPress }) {
 	return (
 		<Pressable
 			style={({ pressed }) => [
 				styles.container,
 				pressed && styles.pressed,
 			]}
+			onPress={onPress}
 		>
 			<Ionicons
-				name="scan-outline"
+				name="qr-code-outline"
 				size={24}
 				color={ColorPalette.blue400}
 			/>
