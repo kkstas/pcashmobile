@@ -1,10 +1,13 @@
 import { View, StyleSheet, Text, Pressable } from "react-native"
 import ColorPalette from "../../../theme/ColorPalette"
+// import LocateMe from "./location/LocateMe"
+// import PickFromMap from "./location/PickFromMap"
 
 export default function LocationBox() {
 	return (
 		<View style={styles.container}>
-			<Text>Location box</Text>
+			{/* <LocateMe /> */}
+			{/* <PickFromMap /> */}
 		</View>
 	)
 }
@@ -15,8 +18,9 @@ const styles = StyleSheet.create({
 		height: 100,
 		backgroundColor: "#fff",
 		borderRadius: 15,
-		justifyContent: "center",
+		justifyContent: "space-around",
 		alignItems: "center",
+		flexDirection: "row",
 		marginVertical: 10,
 		marginHorizontal: 5,
 		shadowColor: "#000",

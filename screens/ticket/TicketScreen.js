@@ -6,10 +6,17 @@ import TitleInput from "./inputs/TitleInput"
 import ImageBox from "./pickers/ImageBox"
 import LocationBox from "./pickers/LocationBox"
 import SubmitBtn from "./SubmitBtn"
+import MainInfo from "./MainInfo"
 
 export default function TicketScreen() {
 	const [bodyText, setBodyText] = useState("")
 	const [titleText, setTitleText] = useState("")
+	const [pickedLocation, setPickedLocation] = useState()
+	const [selectedImage, setSelectedImage] = useState()
+
+	function takeImageHandler(imageUri) {
+		setSelectedImage(imageUri)
+	}
 
 	return (
 		<Header
@@ -17,7 +24,7 @@ export default function TicketScreen() {
 			isBackgroundTransparent={true}
 		>
 			<View style={styles.container}>
-				<Text>ticket screen</Text>
+				<MainInfo />
 				<TitleInput
 					value={titleText}
 					onChangeText={setTitleText}
@@ -27,7 +34,7 @@ export default function TicketScreen() {
 					onChangeText={setBodyText}
 				/>
 				<LocationBox />
-				<ImageBox />
+				<ImageBox onTakeImage={takeImageHandler} />
 				<SubmitBtn />
 			</View>
 		</Header>

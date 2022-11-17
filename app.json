@@ -28,6 +28,16 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "plugins": [
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "The app needs access to your photos to perform action.",
+          "cameraPermission": "The app needs access to your camera to perform action.",
+          "microphonePermission": "The app needs access to your microphone to perform action."
+        }
+      ]
+    ]
   }
 }

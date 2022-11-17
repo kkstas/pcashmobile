@@ -6,7 +6,7 @@ export default function TitleInput({ onChangeText, value }) {
 		<View style={styles.container}>
 			<TextInput
 				style={styles.input}
-				placeholder="title input"
+				placeholder="Tytuł zgłoszenia"
 				onChangeText={onChangeText}
 				value={value}
 			/>

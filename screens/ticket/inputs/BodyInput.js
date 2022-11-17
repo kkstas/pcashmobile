@@ -6,7 +6,7 @@ export default function BodyInput({ onChangeText, value }) {
 		<View style={styles.container}>
 			<TextInput
 				style={styles.input}
-				placeholder="body input"
+				placeholder="Opis problemu"
 				multiline
 				numberOfLines={4}
 				onChangeText={(text) => onChangeText(text)}
