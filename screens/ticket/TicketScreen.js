@@ -12,11 +12,8 @@ export default function TicketScreen() {
 	const [bodyText, setBodyText] = useState("")
 	const [titleText, setTitleText] = useState("")
 	const [pickedLocation, setPickedLocation] = useState()
-	const [selectedImage, setSelectedImage] = useState()
-
-	function takeImageHandler(imageUri) {
-		setSelectedImage(imageUri)
-	}
+	const [pickedMedia, setPickedMedia] = useState()
+	const [thumbnail, setThumbnail] = useState()
 
 	return (
 		<Header
@@ -34,7 +31,12 @@ export default function TicketScreen() {
 					onChangeText={setBodyText}
 				/>
 				<LocationBox />
-				<ImageBox onTakeImage={takeImageHandler} />
+				<ImageBox
+					setPickedMedia={setPickedMedia}
+					pickedMedia={pickedMedia}
+					setThumbnail={setThumbnail}
+					thumbnail={thumbnail}
+				/>
 				<SubmitBtn />
 			</View>
 		</Header>

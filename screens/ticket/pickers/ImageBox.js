@@ -21,10 +21,14 @@ import Ionicons from "@expo/vector-icons/Ionicons"
 import * as Haptics from "expo-haptics"
 import * as VideoThumbnails from "expo-video-thumbnails"
 
-export default function ImageBox({ onTakeImage }) {
+export default function ImageBox({
+	pickedMedia,
+	setPickedMedia,
+	thumbnail,
+	setThumbnail,
+}) {
 	const [cameraPermissionInformation, requestPermission] =
 		useCameraPermissions()
-	const [pickedImage, setPickedImage] = useState()
 	const [mediaLibraryPermissionInformation, requestMediaPermission] =
 		useMediaLibraryPermissions()
 
@@ -71,9 +75,10 @@ export default function ImageBox({ onTakeImage }) {
 		return true
 	}
 
-	function deleteImageHandler() {
+	function deleteMediaHandler() {
 		Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium)
-		setPickedImage()
+		setPickedMedia()
+		setThumbnail()
 	}
 
 	async function takeImageHandler() {
@@ -83,15 +88,26 @@ export default function ImageBox({ onTakeImage }) {
 			return
 		}
 		const image = await launchCameraAsync({
+			mediaTypes: MediaTypeOptions.All,
 			allowsEditing: true,
 			aspect: [4, 4],
 			quality: 0.5,
 		})
-		setPickedImage(image.uri)
-		onTakeImage(image.uri)
+
+		if (image.type === "video") {
+			const thumbnailImage = await VideoThumbnails.getThumbnailAsync(
+				image.uri,
+				{ time: 1000 }
+			)
+			setPickedMedia(image)
+			setThumbnail(thumbnailImage.uri)
+		} else {
+			setPickedMedia(image)
+			setThumbnail(image.uri)
+		}
 	}
 
-	async function pickImageHandler() {
+	async function pickMediaHandler() {
 		Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium)
 		const hasMediaPermission = await verifyMediaPermissions()
 		if (!hasMediaPermission) {
@@ -104,42 +120,35 @@ export default function ImageBox({ onTakeImage }) {
 			allowsEditing: true,
 		})
 
-		const { uri } = await VideoThumbnails.getThumbnailAsync(
-			"http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4",
-			{
-				time: 15000,
-			}
-		)
-
 		console.log(image)
 		if (image.type === "video") {
 			const thumbnailImage = await VideoThumbnails.getThumbnailAsync(
 				image.uri,
 				{ time: 1000 }
 			)
-			setPickedImage(thumbnailImage.uri)
-			onTakeImage(thumbnailImage.uri)
+			setPickedMedia(image)
+			setThumbnail(thumbnailImage.uri)
 		} else {
-			setPickedImage(image.uri)
-			onTakeImage(image.uri)
+			setPickedMedia(image)
+			setThumbnail(image.uri)
 		}
 	}
 
-	let imagePreview = <Text></Text>
+	let mediaPreview = <Text></Text>
 
-	if (pickedImage) {
-		imagePreview = (
+	if (thumbnail) {
+		mediaPreview = (
 			<Image
 				style={styles.image}
-				source={{ uri: pickedImage }}
+				source={{ uri: thumbnail }}
 			/>
 		)
 	}
 
 	return (
 		<View style={styles.mainView}>
-			<View style={styles.imagePreview}>{imagePreview}</View>
-			{!pickedImage && (
+			<View style={styles.imagePreview}>{mediaPreview}</View>
+			{!pickedMedia && (
 				<View style={styles.buttonsContainer}>
 					<View style={styles.singleBtnContainer}>
 						<Pressable
@@ -147,7 +156,7 @@ export default function ImageBox({ onTakeImage }) {
 								styles.pickFromGallery,
 								pressed && styles.pressed,
 							]}
-							onPress={pickImageHandler}
+							onPress={pickMediaHandler}
 						>
 							<Ionicons
 								name="images"
@@ -177,13 +186,13 @@ export default function ImageBox({ onTakeImage }) {
 					</View>
 				</View>
 			)}
-			{pickedImage && (
+			{pickedMedia && (
 				<Pressable
 					style={({ pressed }) => [
 						styles.cross,
 						pressed && styles.pressed,
 					]}
-					onPress={deleteImageHandler}
+					onPress={deleteMediaHandler}
 				>
 					<Ionicons
 						name="close"
@@ -262,8 +271,8 @@ const styles = StyleSheet.create({
 	},
 	cross: {
 		position: "absolute",
-		right: 30,
-		bottom: 10,
+		right: 40,
+		bottom: 30,
 		width: 50,
 		height: 50,
 		justifyContent: "center",
