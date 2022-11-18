@@ -3,7 +3,7 @@ import { View, StyleSheet, Pressable, Text } from "react-native"
 import Header from "../../components/header/Header"
 import BodyInput from "./inputs/BodyInput"
 import TitleInput from "./inputs/TitleInput"
-import ImageBox from "./pickers/ImageBox"
+import ImageBox from "./pickers/image/ImageBox"
 import LocationBox from "./pickers/LocationBox"
 import SubmitBtn from "./SubmitBtn"
 import MainInfo from "./MainInfo"
@@ -11,9 +11,6 @@ import MainInfo from "./MainInfo"
 export default function TicketScreen() {
 	const [bodyText, setBodyText] = useState("")
 	const [titleText, setTitleText] = useState("")
-	const [pickedLocation, setPickedLocation] = useState()
-	const [pickedMedia, setPickedMedia] = useState()
-	const [thumbnail, setThumbnail] = useState()
 
 	return (
 		<Header
@@ -31,12 +28,7 @@ export default function TicketScreen() {
 					onChangeText={setBodyText}
 				/>
 				<LocationBox />
-				<ImageBox
-					setPickedMedia={setPickedMedia}
-					pickedMedia={pickedMedia}
-					setThumbnail={setThumbnail}
-					thumbnail={thumbnail}
-				/>
+				<ImageBox />
 				<SubmitBtn />
 			</View>
 		</Header>
@@ -49,6 +41,7 @@ const styles = StyleSheet.create({
 		flex: 1,
 		justifyContent: "center",
 		alignItems: "center",
-		paddingVertical: 10,
+		paddingTop: 10,
+		paddingBottom: 90,
 	},
 })
