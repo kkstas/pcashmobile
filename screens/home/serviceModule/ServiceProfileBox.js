@@ -2,20 +2,28 @@ import { View, StyleSheet, Text, Pressable } from "react-native"
 import Ionicons from "@expo/vector-icons/Ionicons"
 import ColorPalette from "../../../theme/ColorPalette"
 
-export default function OpinionBox() {
+export default function ServiceProfileBox({ onPress }) {
 	return (
 		<Pressable
 			style={({ pressed }) => [
 				styles.container,
 				pressed && styles.pressed,
 			]}
+			onPress={onPress}
 		>
+			<View style={styles.floatingChevron}>
+				<Ionicons
+					name="chevron-forward-outline"
+					size={34}
+					color={ColorPalette.blue400}
+				/>
+			</View>
 			<Ionicons
-				name="chatbox-ellipses-outline"
+				name="person-outline"
 				size={24}
 				color={ColorPalette.blue400}
 			/>
-			<Text style={styles.text}>Podziel się opinią</Text>
+			<Text style={styles.text}>Profil serwisanta</Text>
 		</Pressable>
 	)
 }
@@ -44,5 +52,10 @@ const styles = StyleSheet.create({
 	},
 	pressed: {
 		opacity: 0.5,
+	},
+	floatingChevron: {
+		position: "absolute",
+		right: 1,
+		opacity: 0.2,
 	},
 })

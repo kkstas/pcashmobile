@@ -23,33 +23,38 @@ export default function ImageBox() {
 	}
 
 	return (
-		<View style={styles.mainView}>
-			<LinearGradient
-				colors={[ColorPalette.white, ColorPalette.backgroundDarker]}
-				style={styles.imagePreview}
-			>
-				{mediaPreview}
-			</LinearGradient>
-			{!thumbnailUri && (
-				<View style={styles.buttonsContainer}>
-					<TakeImageButton />
-					<PickMediaButton />
-				</View>
-			)}
-			{thumbnailUri && (
-				<View style={styles.mediaContainer}>
-					<DeleteMediaButton />
-					<MediaInfo
-						type={media.type}
-						data={
-							media.type === "image"
-								? media.fileSize
-								: media.duration
-						}
-					/>
-				</View>
-			)}
-		</View>
+		<>
+			<View style={styles.textContainer}>
+				<Text style={styles.text}>3. Możesz też załączyć zdjęcie:</Text>
+			</View>
+			<View style={styles.mainView}>
+				<LinearGradient
+					colors={[ColorPalette.white, ColorPalette.backgroundDarker]}
+					style={styles.imagePreview}
+				>
+					{mediaPreview}
+				</LinearGradient>
+				{!thumbnailUri && (
+					<View style={styles.buttonsContainer}>
+						<TakeImageButton />
+						<PickMediaButton />
+					</View>
+				)}
+				{thumbnailUri && (
+					<View style={styles.mediaContainer}>
+						<DeleteMediaButton />
+						<MediaInfo
+							type={media.type}
+							data={
+								media.type === "image"
+									? media.fileSize
+									: media.duration
+							}
+						/>
+					</View>
+				)}
+			</View>
+		</>
 	)
 }
 
@@ -98,5 +103,15 @@ const styles = StyleSheet.create({
 		justifyContent: "center",
 		alignItems: "center",
 		marginTop: 15,
+	},
+	textContainer: {
+		width: "90%",
+		paddingBottom: 5,
+		paddingLeft: 12,
+	},
+	text: {
+		color: ColorPalette.blue400,
+		fontSize: 22,
+		paddingTop: 10,
 	},
 })

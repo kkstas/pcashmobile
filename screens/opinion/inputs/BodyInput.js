@@ -1,21 +1,24 @@
 import { View, TextInput, StyleSheet, Text } from "react-native"
 import ColorPalette from "../../../theme/ColorPalette"
+import LocationSeparator from "../LocationSeparator"
 
 export default function BodyInput({ onChangeText, value }) {
 	return (
-		<View style={styles.container}>
+		<>
 			<View style={styles.textContainer}>
-				<Text style={styles.text}>Opis zgłoszenia:</Text>
+				<Text style={styles.text}>1. Opisz zgłoszenie:</Text>
 			</View>
-			<TextInput
-				style={styles.input}
-				placeholder="Opis zgłoszenia"
-				multiline
-				numberOfLines={4}
-				onChangeText={(text) => onChangeText(text)}
-				value={value}
-			/>
-		</View>
+			<View style={styles.container}>
+				<TextInput
+					style={styles.input}
+					placeholder="Opis zgłoszenia"
+					multiline
+					numberOfLines={4}
+					onChangeText={(text) => onChangeText(text)}
+					value={value}
+				/>
+			</View>
+		</>
 	)
 }
 
@@ -50,7 +53,8 @@ const styles = StyleSheet.flatten({
 		paddingLeft: 12,
 	},
 	text: {
-		color: ColorPalette.blue400dark,
-		fontSize: 16,
+		color: ColorPalette.blue400,
+		fontSize: 22,
+		paddingTop: 10,
 	},
 })

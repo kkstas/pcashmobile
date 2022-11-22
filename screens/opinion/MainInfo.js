@@ -13,8 +13,8 @@ export default function MainInfo() {
 					color={ColorPalette.blue400}
 				/>
 				<View style={styles.textContainer}>
-					<Text style={styles.mainTextOne}>Zgłoś stan</Text>
-					<Text style={styles.mainTextTwo}>bankomatu</Text>
+					<Text style={styles.mainTextOne}>Przekaż nam</Text>
+					<Text style={styles.mainTextTwo}>swoją opinię!</Text>
 				</View>
 			</View>
 			<Separator />

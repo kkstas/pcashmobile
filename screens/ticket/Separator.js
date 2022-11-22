@@ -1,6 +1,6 @@
-import { View, Text, StyleSheet } from "react-native"
-import ColorPalette from "../../theme/ColorPalette"
+import { View, StyleSheet } from "react-native"
 import Ionicons from "@expo/vector-icons/Ionicons"
+import ColorPalette from "../../theme/ColorPalette"
 
 export default function Separator() {
 	return (
@@ -8,7 +8,7 @@ export default function Separator() {
 			<View style={styles.line}></View>
 			<View style={styles.iconContainer}>
 				<Ionicons
-					name="home-outline"
+					name="text-outline"
 					size={15}
 					style={styles.icon}
 				/>

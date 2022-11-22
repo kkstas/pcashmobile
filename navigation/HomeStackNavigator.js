@@ -4,6 +4,7 @@ import ScanScreen from "../screens/scan/ScanScreen"
 import ColorPalette from "../theme/ColorPalette"
 import ReceiptScreen from "../screens/receipt/ReceiptScreen"
 import TicketScreen from "../screens/ticket/TicketScreen"
+import OpinionScreen from "../screens/opinion/OpinionScreen"
 
 const Stack = createNativeStackNavigator()
 
@@ -29,10 +30,14 @@ export default function HomeStackNavigator() {
 				name="Receipt"
 				component={ReceiptScreen}
 			/>
-            <Stack.Screen
-                name="Ticket"
-                component={TicketScreen}
-            />
+			<Stack.Screen
+				name="Ticket"
+				component={TicketScreen}
+			/>
+			<Stack.Screen
+				name="Opinion"
+				component={OpinionScreen}
+			/>
 		</Stack.Navigator>
 	)
 }

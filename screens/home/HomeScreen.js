@@ -3,14 +3,21 @@ import { StyleSheet, View, Text, Pressable, ScrollView } from "react-native"
 import Header from "../../components/header/Header"
 import ColorPalette from "../../theme/ColorPalette"
 import MainBox from "./MainBox"
-import AllTicketsBox from "./moduleBoxes/AllTicketsBox"
-import OpinionBox from "./moduleBoxes/OpinionBox"
-import ReceiptBox from "./moduleBoxes/ReceiptBox"
-import ScannerBox from "./moduleBoxes/ScannerBox"
-import ServiceBox from "./moduleBoxes/ServiceBox"
-import TicketBox from "./moduleBoxes/TicketBox"
+import TicketBox from "./employeeModule/TicketBox"
+import OpinionBox from "./customerModule/OpinionBox"
+import ReceiptBox from "./customerModule/ReceiptBox"
+import ScannerBox from "./serviceModule/ScannerBox"
+import ServiceBox from "./serviceModule/ServiceBox"
 import Separator from "./Separator"
 import { useSelector } from "react-redux"
+import ServiceSeparator from "./serviceModule/ServiceSeparator"
+import EmployeeSeparator from "./employeeModule/EmployeeSeparator"
+import CustomerSeparator from "./customerModule/CustomerSeparator"
+import AllReceiptsBox from "./customerModule/AllReceiptsBox"
+import YourProfileBox from "./customerModule/YourProfileBox"
+import YourTicketsBox from "./employeeModule/YourTicketsBox"
+import YourFormsBox from "./serviceModule/YourFormsBox"
+import ServiceProfileBox from "./serviceModule/ServiceProfileBox"
 
 export default function HomeScreen({ navigation }) {
 	const isLoggedIn = useSelector((state) => state.userInfo.isLoggedIn)
@@ -23,18 +30,68 @@ export default function HomeScreen({ navigation }) {
 			logOut={true}
 		>
 			<MainBox />
-			<Separator />
+			<CustomerSeparator />
 			<View style={styles.moduleContainer}>
-				<ScannerBox onPress={() => navigation.navigate("Scan")} />
-				<TicketBox onPress={() => navigation.navigate("Ticket")} />
-			</View>
-			<View style={styles.moduleContainer}>
+				<OpinionBox onPress={() => navigation.navigate("Opinion")} />
 				<ReceiptBox onPress={() => navigation.navigate("Receipt")} />
-				<AllTicketsBox />
 			</View>
 			<View style={styles.moduleContainer}>
-				<OpinionBox />
+				<AllReceiptsBox
+					onPress={() =>
+						navigation.navigate("DocsStackNavigator", {
+							screen: "Docs",
+						})
+					}
+				/>
+				<YourProfileBox
+					onPress={() =>
+						navigation.navigate("ProfileStackNavigator", {
+							screen: "Profile",
+						})
+					}
+				/>
+			</View>
+			<EmployeeSeparator />
+			<View style={styles.moduleContainer}>
+				<TicketBox onPress={() => navigation.navigate("Ticket")} />
+				<ReceiptBox onPress={() => navigation.navigate("Receipt")} />
+			</View>
+			<View style={styles.moduleContainer}>
+				<YourTicketsBox
+					onPress={() =>
+						navigation.navigate("DocsStackNavigator", {
+							screen: "Docs",
+						})
+					}
+				/>
+				<YourProfileBox
+					onPress={() =>
+						navigation.navigate("ProfileStackNavigator", {
+							screen: "Profile",
+						})
+					}
+				/>
+			</View>
+			<ServiceSeparator />
+			<View style={styles.moduleContainer}>
 				<ServiceBox />
+				<ScannerBox onPress={() => navigation.navigate("Scan")} />
+			</View>
+			<View style={styles.moduleContainer}>
+				<YourFormsBox
+					onPress={() =>
+						navigation.navigate("DocsStackNavigator", {
+							screen: "Docs",
+						})
+					}
+				/>
+				<ServiceProfileBox
+					onPress={() =>
+						navigation.navigate("ProfileStackNavigator", {
+							screen: "Profile ",
+						})
+					}
+				/>
 			</View>
 			<View style={styles.bottomCoverView}></View>
 		</Header>

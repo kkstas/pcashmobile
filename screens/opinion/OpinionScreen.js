@@ -10,7 +10,7 @@ import MainInfo from "./MainInfo"
 import PhotoSeparator from "./PhotoSeparator"
 import LocationSeparator from "./LocationSeparator"
 
-export default function TicketScreen() {
+export default function OpinionScreen() {
 	const [bodyText, setBodyText] = useState("")
 	const [titleText, setTitleText] = useState("")
 
@@ -21,18 +21,14 @@ export default function TicketScreen() {
 		>
 			<View style={styles.container}>
 				<MainInfo />
-				<TitleInput
-					value={titleText}
-					onChangeText={setTitleText}
-				/>
 				<BodyInput
 					value={bodyText}
 					onChangeText={setBodyText}
 				/>
-				<PhotoSeparator />
-				<ImageBox />
 				<LocationSeparator />
 				<LocationBox />
+				<PhotoSeparator />
+				<ImageBox />
 				<SubmitBtn />
 			</View>
 		</Header>

@@ -1,6 +1,6 @@
 import { View, Pressable, StyleSheet, Text } from "react-native"
-import ColorPalette from "../../theme/ColorPalette"
 import { LinearGradient } from "expo-linear-gradient"
+import ColorPalette from "../../theme/ColorPalette"
 
 export default function SubmitBtn(props) {
 	return (

@@ -2,20 +2,29 @@ import { View, StyleSheet, Text, Pressable } from "react-native"
 import Ionicons from "@expo/vector-icons/Ionicons"
 import ColorPalette from "../../../theme/ColorPalette"
 
-export default function AllTicketsBox() {
+export default function AllReceiptsBox({ onPress }) {
 	return (
 		<Pressable
 			style={({ pressed }) => [
 				styles.container,
 				pressed && styles.pressed,
 			]}
+			onPress={onPress}
 		>
+			<View style={styles.floatingChevron}>
+				<Ionicons
+					name="chevron-back-outline"
+					size={34}
+					color={ColorPalette.blue400}
+				/>
+			</View>
 			<Ionicons
-				name="file-tray-full-outline"
+				name="document-text-outline"
 				size={24}
 				color={ColorPalette.blue400}
 			/>
-			<Text style={styles.text}>Twoje zgłoszenia</Text>
+			<Text style={styles.text}>Twoje</Text>
+			<Text style={styles.textTwo}>potwierdzenia</Text>
 		</Pressable>
 	)
 }
@@ -37,12 +46,21 @@ const styles = StyleSheet.create({
 		shadowOpacity: 0.1,
 		shadowRadius: 1.5,
 		elevation: 3,
+		paddingTop: 10,
 	},
 	text: {
 		color: ColorPalette.blue400,
-		marginTop: 6,
+		paddingTop: 5,
+	},
+	textTwo: {
+		color: ColorPalette.blue400,
 	},
 	pressed: {
 		opacity: 0.5,
+	},
+	floatingChevron: {
+		position: "absolute",
+		left: 1,
+		opacity: 0.2,
 	},
 })

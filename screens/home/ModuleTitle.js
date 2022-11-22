@@ -1,6 +1,6 @@
 import { LinearGradient } from "expo-linear-gradient"
 import { View, Text, StyleSheet } from "react-native"
-import ColorPalette from "../../../theme/ColorPalette"
+import ColorPalette from "../../theme/ColorPalette"
 
 export default function ModuleTitle() {
 	return (

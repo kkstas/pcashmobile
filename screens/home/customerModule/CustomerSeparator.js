@@ -1,17 +1,12 @@
 import { View, Text, StyleSheet } from "react-native"
-import ColorPalette from "../../theme/ColorPalette"
-import Ionicons from "@expo/vector-icons/Ionicons"
+import ColorPalette from "../../../theme/ColorPalette"
 
-export default function Separator() {
+export default function CustomerSeparator() {
 	return (
 		<View style={styles.container}>
 			<View style={styles.line}></View>
 			<View style={styles.iconContainer}>
-				<Ionicons
-					name="home-outline"
-					size={15}
-					style={styles.icon}
-				/>
+				<Text style={styles.icon}>Moduł klienta</Text>
 			</View>
 			<View style={styles.line}></View>
 		</View>
@@ -22,7 +17,7 @@ const styles = StyleSheet.create({
 	container: {
 		width: "100%",
 		height: 20,
-		marginTop: 25,
+		marginTop: 15,
 		marginBottom: 5,
 		position: "relative",
 		justifyContent: "center",
@@ -33,7 +28,7 @@ const styles = StyleSheet.create({
 	line: {
 		height: 0.5,
 		backgroundColor: ColorPalette.blue400,
-		flex: 3,
+		flex: 1,
 	},
 	icon: {
 		color: ColorPalette.blue400,
