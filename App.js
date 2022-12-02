@@ -7,7 +7,7 @@ import { store } from "./store/redux/store"
 import LogInStackNavigator from "./navigation/LogInStackNavigator"
 import MainNav from "./navigation/MainNav"
 
-enableFreeze(true)
+// enableFreeze(true)
 const Stack = createNativeStackNavigator()
 
 export default function App() {
